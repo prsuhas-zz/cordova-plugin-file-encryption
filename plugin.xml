@@ -13,7 +13,7 @@
     <engine name="cordova-plugman" version=">=4.2.0" /><!-- needed for gradleReference support -->
   </engines>
   <js-module name="FileEncryption" src="www/prsuhas.file-encryption.js">
-    <merges target="cordova.plugins.prsuhas"/>
+    <merges target="FileEncryption"/>
   </js-module>
   <platform name="android">
     <framework src="src/android/conceal.gradle" custom="true" type="gradleReference" />
