@@ -1,6 +1,6 @@
-#import "Safe.h"
+#import "FileEncryption.h"
 
-@implementation Safe
+@implementation FileEncryption
 
 /**
  *  encrypt
