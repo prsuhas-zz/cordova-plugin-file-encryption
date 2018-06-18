@@ -1,7 +1,7 @@
 cordova-plugin-file-encryption
 ====
 
-> Simple file encryption for Cordova.
+> Cordova File Encryption Plugin for Android and iOS.
 
 ## Install
 
