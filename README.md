@@ -1,20 +1,18 @@
-cordova-safe
+cordova-plugin-file-encryption
 ====
-
-[![Build Status](https://travis-ci.org/disusered/cordova-safe.svg)](https://travis-ci.org/disusered/cordova-safe) [![Code Climate](https://codeclimate.com/github/disusered/cordova-safe/badges/gpa.svg)](https://codeclimate.com/github/disusered/cordova-safe) 
 
 > Simple file encryption for Cordova.
 
 ## Install
 
 ```bash
-$ cordova plugin add cordova-safe
+$ cordova plugin add cordova-plugin-file-encryption
 ```
 
 ## Usage
 
 ```javascript
-var safe = cordova.plugins.disusered.safe,
+var safe = cordova.plugins.fileEncryption,
     key = 'someKey';
 
 
@@ -38,8 +36,8 @@ safe.encrypt('file:/storage/sdcard/DCIM/Camera/1404177327783.jpg', key, success,
 The plugin exposes the following methods:
 
 ```javascript
-cordova.plugins.disusered.safe.encrypt(file, key, success, error);
-cordova.plugins.disusered.safe.decrypt(file, key, success, error);
+cordova.plugins.fileEncryption.encrypt(file, key, success, error);
+cordova.plugins.fileEncryption.decrypt(file, key, success, error);
 ```
 
 #### Parameters:
@@ -50,4 +48,4 @@ cordova.plugins.disusered.safe.decrypt(file, key, success, error);
 
 ## License
 
-MIT © [Carlos Rosquillas](http://carlosanton.io)
+MIT
