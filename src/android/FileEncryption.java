@@ -1,4 +1,4 @@
-package com.disusered;
+package com.prsuhas;
 
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -29,7 +29,7 @@ import com.facebook.crypto.util.SystemNativeCryptoLibrary;
 /**
  * This class encrypts and decrypts files using the Conceal encryption lib
  */
-public class Safe extends CordovaPlugin {
+public class FileEncryption extends CordovaPlugin {
 
   public static final String ENCRYPT_ACTION = "encrypt";
   public static final String DECRYPT_ACTION = "decrypt";
