@@ -1,14 +1,14 @@
 /**
- * disusered.safe.js
+ * prsuhas.file-encryption.js
  *
  * @overview Easy to use cryptographic operations for Cordova.
- * @author Carlos Antonio
+ * @author Suhas P R
  * @license MIT
 */
 
 var exec = require('cordova/exec');
 
-var safe = {
+var FileEncryption = {
   /**
    * encrypt
    *
@@ -82,4 +82,4 @@ function onError(error, code) {
   return code;
 }
 
-exports.safe = safe;
+exports.FileEncryption = FileEncryption;
