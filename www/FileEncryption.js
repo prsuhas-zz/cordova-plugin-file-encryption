@@ -1,15 +1,20 @@
 /**
- * prsuhas.file-encryption.js
+ * FileEncryption.js
  *
  * @overview Easy to use cryptographic operations for Cordova.
  * @author Suhas P R
  * @license MIT
 */
+"use strict";
 
-var exec = require('cordova/exec');
+var argscheck = require('cordova/argscheck'),
+	utils = require('cordova/utils'),
+	exec = require('cordova/exec');
 
-var FileEncryption = {
-  /**
+function FileEncryption() {
+}
+
+/**
    * encrypt
    *
    * @param {String} path File URI
@@ -18,7 +23,8 @@ var FileEncryption = {
    * @param {Function} error Failure callback
    * @returns {void}
    */
-  encrypt: function(path, password, success, error) {
+
+FileEncryption.prototype.encrypt = function (path, password, success, error) {
     var encryptSuccess, encryptError;
 
     if (!path || arguments.length === 0) return;
@@ -26,10 +32,10 @@ var FileEncryption = {
     encryptSuccess = onSuccess.bind(null, success);
     encryptError = onError.bind(null, error);
 
-    exec(encryptSuccess, encryptError, 'Safe', 'encrypt', [path, password]);
-  },
+    exec(encryptSuccess, encryptError, 'FileEncryption', 'encrypt', [path, password]);
+};
 
-  /**
+/**
    * decrypt
    *
    * @param {String} path File URI
@@ -38,7 +44,8 @@ var FileEncryption = {
    * @param {Function} error Failure callback
    * @returns {void}
    */
-  decrypt: function(path, password, success, error) {
+
+FileEncryption.prototype.decrypt = function (path, password,  success, error) {
     var decryptSuccess, decryptError;
 
     if (!path || arguments.length === 0) return;
@@ -46,9 +53,7 @@ var FileEncryption = {
     decryptSuccess = onSuccess.bind(null, success);
     decryptError = onError.bind(null, error);
 
-    exec(decryptSuccess, decryptError, 'Safe', 'decrypt', [path, password]);
-  }
-
+    exec(decryptSuccess, decryptError, 'FileEncryption', 'decrypt', [path, password]);
 };
 
 /**
@@ -82,4 +87,12 @@ function onError(error, code) {
   return code;
 }
 
-exports.FileEncryption = FileEncryption;
+FileEncryption.install = function () {
+	if (!window.plugins) {
+		window.plugins = {};
+	}
+	window.plugins.fileEncryption = new FileEncryption();
+	return window.plugins.fileEncryption;
+};
+
+cordova.addConstructor(FileEncryption.install);

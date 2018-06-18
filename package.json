@@ -9,13 +9,9 @@
       "ios"
     ]
   },
-  "scripts": {
-    "lint": "gulp lint",
-    "watch": "gulp watch"
-  },
   "repository": {
     "type": "git",
-    "url": "https://github.com/prsuhas/cordova-plugin-file-encryption.git"
+    "url": "git+https://github.com/prsuhas/cordova-plugin-file-encryption.git"
   },
   "keywords": [
     "cordova",
@@ -31,9 +27,5 @@
   "bugs": {
     "url": "https://github.com/prsuhas/cordova-plugin-file-encryption/issues"
   },
-  "homepage": "https://github.com/prsuhas/cordova-plugin-file-encryption",
-  "devDependencies": {
-    "gulp": "^3.9.0",
-    "gulp-eslint": "^0.15.0"
-  }
+  "homepage": "https://github.com/prsuhas/cordova-plugin-file-encryption#readme"
 }

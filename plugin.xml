@@ -9,11 +9,11 @@
   <issue>https://github.com/prsuhas/cordova-plugin-file-encryption/issues</issue>
   <engines>
     <engine name="cordova" version=">=4.0.0" />
-    <engine name="cordova-android" version=">=6.3.0" />
-    <engine name="cordova-plugman" version=">=4.2.0" /><!-- needed for gradleReference support -->
+    <!-- <engine name="cordova-android" version=">=6.3.0" /> -->
+    <!-- <engine name="cordova-plugman" version=">=4.2.0" /> --><!-- needed for gradleReference support -->
   </engines>
-  <js-module name="FileEncryption" src="www/prsuhas.file-encryption.js">
-    <merges target="FileEncryption"/>
+  <js-module name="FileEncryption" src="www/FileEncryption.js">
+    <merges target="fileEncryption"/>
   </js-module>
   <platform name="android">
     <framework src="src/android/conceal.gradle" custom="true" type="gradleReference" />
