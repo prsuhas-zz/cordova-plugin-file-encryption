@@ -19,7 +19,9 @@ import org.json.JSONException;
 import android.net.Uri;
 import android.content.Context;
 
+import com.facebook.android.crypto.keychain.AndroidConceal;
 import com.facebook.crypto.Crypto;
+import com.facebook.crypto.CryptoConfig;
 import com.facebook.crypto.Entity;
 import com.facebook.crypto.exception.CryptoInitializationException;
 import com.facebook.crypto.exception.KeyChainException;
@@ -111,14 +113,17 @@ public class FileEncryption extends CordovaPlugin {
       SOURCE_URI  = Uri.parse(path);
       FILE_NAME = SOURCE_URI.getLastPathSegment();
 
-      CONTEXT = cordova.getActivity().getApplicationContext();
-      ENTITY = new Entity(password);
+      CONTEXT = cordova.getActivity().getApplicationContext();      
 
       SOURCE_FILE = new File(SOURCE_URI.getPath());
 
-      // initialize crypto object
-      CRYPTO = new Crypto(new SharedPrefsBackedKeyChain(CONTEXT), new SystemNativeCryptoLibrary());
-
+      // explicitely create 256-bit key chain
+      KeyChain keyChain = new SharedPrefsBackedKeyChain(CONTEXT, CryptoConfig.KEY_256);
+      // create the default crypto (expects 256-bit key) and initialize crypto object
+      CRYPTO = AndroidConceal.get().createDefaultCrypto(keyChain);
+      
+      ENTITY = Entity.create(password);
+      
       // check for whether crypto is available
       if (!CRYPTO.isAvailable()) {
         callbackContext.error(1);
