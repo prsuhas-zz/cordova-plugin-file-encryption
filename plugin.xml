@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android"
-        id="cordova-safe" version="3.0.0">
+        id="cordova-plugin-file-encryption" version="3.0.0">
   <name>FileEncryption</name>
   <description>Simple file encryption for Cordova.</description>
   <license>MIT</license>
@@ -17,13 +17,14 @@
   </js-module>
   <platform name="android">
     <framework src="src/android/conceal.gradle" custom="true" type="gradleReference" />
-    <source-file src="src/android/Safe.java" target-dir="src/com/prsuhas"/>
+    <source-file src="src/android/FileEncryption.java" target-dir="src/com/prsuhas"/>
     <config-file target="res/xml/config.xml" parent="/*" >
-      <feature name="Safe">
+      <feature name="FileEncryption">
         <param name="android-package" value="com.prsuhas.FileEncryption"/>
       </feature>
     </config-file>
     <config-file target="AndroidManifest.xml" parent="/manifest">
+      <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
       <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     </config-file>
   </platform>
