@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android"
-        id="cordova-plugin-file-encryption" version="3.0.0">
+        id="cordova-plugin-file-encryption" version="3.0.1">
   <name>FileEncryption</name>
   <description>Simple file encryption for Cordova.</description>
   <license>MIT</license>
@@ -8,8 +8,8 @@
   <repo>https://github.com/prsuhas/cordova-plufin-file-encryption</repo>
   <issue>https://github.com/prsuhas/cordova-plugin-file-encryption/issues</issue>
   <engines>
-    <engine name="cordova" version=">=3.0.0" />
-    <engine name="cordova-android" version=">=4" />
+    <engine name="cordova" version=">=4.0.0" />
+    <engine name="cordova-android" version=">=6.3.0" />
     <engine name="cordova-plugman" version=">=4.2.0" /><!-- needed for gradleReference support -->
   </engines>
   <js-module name="FileEncryption" src="www/prsuhas.file-encryption.js">
