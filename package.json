@@ -1,9 +1,9 @@
 {
-  "name": "cordova-safe",
-  "version": "2.0.1",
-  "description": "Simple file crypto for Cordova.",
+  "name": "cordova-plugin-file-encryption",
+  "version": "3.0.0",
+  "description": "Simple file encryption for Cordova.",
   "cordova": {
-    "id": "com.disusered.safe",
+    "id": "com.prsuhas.FileEncryption",
     "platforms": [
       "android",
       "ios"
@@ -15,7 +15,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/disusered/cordova-safe.git"
+    "url": "https://github.com/prsuhas/cordova-plugin-file-encryption.git"
   },
   "keywords": [
     "cordova",
@@ -26,12 +26,12 @@
     "cordova-android",
     "cordova-ios"
   ],
-  "author": "Carlos Antonio",
+  "author": "Suhas P R",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/disusered/cordova-safe/issues"
+    "url": "https://github.com/prsuhas/cordova-plugin-file-encryption/issues"
   },
-  "homepage": "https://github.com/disusered/cordova-safe",
+  "homepage": "https://github.com/prsuhas/cordova-plugin-file-encryption",
   "devDependencies": {
     "gulp": "^3.9.0",
     "gulp-eslint": "^0.15.0"
