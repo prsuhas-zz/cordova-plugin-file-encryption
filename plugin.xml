@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android"
-        id="cordova-plugin-file-encryption" version="3.0.1">
+        id="cordova-plugin-file-encryption" version="1.0.0">
   <name>FileEncryption</name>
   <description>Simple file encryption for Cordova.</description>
   <license>MIT</license>
   <keywords>cordova,file,encrypt,decrypt</keywords>
-  <repo>https://github.com/prsuhas/cordova-plufin-file-encryption</repo>
+  <repo>https://github.com/prsuhas/cordova-plugin-file-encryption</repo>
   <issue>https://github.com/prsuhas/cordova-plugin-file-encryption/issues</issue>
   <engines>
     <engine name="cordova" version=">=4.0.0" />
