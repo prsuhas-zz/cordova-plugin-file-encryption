@@ -12,7 +12,7 @@ $ cordova plugin add cordova-plugin-file-encryption
 ## Usage
 
 ```javascript
-var safe = cordova.plugins.fileEncryption,
+var safe = cordova.plugins.prsuhas.FileEncryption,
     key = 'someKey';
 
 
@@ -36,8 +36,8 @@ safe.encrypt('file:/storage/sdcard/DCIM/Camera/1404177327783.jpg', key, success,
 The plugin exposes the following methods:
 
 ```javascript
-cordova.plugins.fileEncryption.encrypt(file, key, success, error);
-cordova.plugins.fileEncryption.decrypt(file, key, success, error);
+cordova.plugins.prsuhas.FileEncryption.encrypt(file, key, success, error);
+cordova.plugins.prsuhas.FileEncryption.decrypt(file, key, success, error);
 ```
 
 #### Parameters:
@@ -45,7 +45,3 @@ cordova.plugins.fileEncryption.decrypt(file, key, success, error);
 * __key:__ A key for the crypto operations
 * __success:__ Optional success callback
 * __error:__ Optional error callback
-
-## License
-
-MIT
