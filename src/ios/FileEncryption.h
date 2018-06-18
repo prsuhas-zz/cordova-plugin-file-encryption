@@ -6,7 +6,7 @@
 #import "RNDecryptor.h"
 
 
-@interface Safe : CDVPlugin {
+@interface FileEncryption : CDVPlugin {
 }
 
 - (void)encrypt:(CDVInvokedUrlCommand*)command;
