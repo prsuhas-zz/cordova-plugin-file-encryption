@@ -5,15 +5,10 @@
  * @author Suhas P R
  * @license MIT
 */
-"use strict";
+var exec = require('cordova/exec');
 
-var argscheck = require('cordova/argscheck'),
-	exec = require('cordova/exec');
-
-var FileEncryption = function() {
-};
-
-/**
+var FileEncryption = {
+  /**
    * encrypt
    *
    * @param {String} path File URI
@@ -23,7 +18,7 @@ var FileEncryption = function() {
    * @returns {void}
    */
 
-FileEncryption.prototype.encrypt = function (path, password, success, error) {
+  encrypt: function (path, password, success, error) {
     var encryptSuccess, encryptError;
 
     if (!path || arguments.length === 0) return;
@@ -31,10 +26,10 @@ FileEncryption.prototype.encrypt = function (path, password, success, error) {
     encryptSuccess = onSuccess.bind(null, success);
     encryptError = onError.bind(null, error);
 
-    exec(encryptSuccess, encryptError, 'FileEncryption', 'encrypt', [path, password]);
-};
+    exec(success, error, 'FileEncryption', 'encrypt', [path, password]);
+  },
 
-/**
+  /**
    * decrypt
    *
    * @param {String} path File URI
@@ -44,7 +39,7 @@ FileEncryption.prototype.encrypt = function (path, password, success, error) {
    * @returns {void}
    */
 
-FileEncryption.prototype.decrypt = function (path, password,  success, error) {
+  decrypt: function (path, password, success, error) {
     var decryptSuccess, decryptError;
 
     if (!path || arguments.length === 0) return;
@@ -52,8 +47,10 @@ FileEncryption.prototype.decrypt = function (path, password,  success, error) {
     decryptSuccess = onSuccess.bind(null, success);
     decryptError = onError.bind(null, error);
 
-    exec(decryptSuccess, decryptError, 'FileEncryption', 'decrypt', [path, password]);
+    exec(success, error, 'FileEncryption', 'decrypt', [path, password]);
+  }
 };
+
 
 /**
  * onSuccess
@@ -88,4 +85,4 @@ function onError(error, code) {
 }
 
 
-module.exports = FileEncryption;
+exports.FileEncryption = FileEncryption;
