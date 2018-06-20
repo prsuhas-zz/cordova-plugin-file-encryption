@@ -7,17 +7,9 @@
 */
 var exec = require('cordova/exec');
 
-var FileEncryption = {
-  /**
-   * encrypt
-   *
-   * @param {String} path File URI
-   * @param {String} password Password for encryption
-   * @param {Function} success Success callback
-   * @param {Function} error Failure callback
-   * @returns {void}
-   */
+var PLUGIN_NAME = 'FileEncryption';
 
+var FileEncryption = {
   encrypt: function (path, password, success, error) {
     var encryptSuccess, encryptError;
 
@@ -26,19 +18,8 @@ var FileEncryption = {
     encryptSuccess = onSuccess.bind(null, success);
     encryptError = onError.bind(null, error);
 
-    exec(success, error, 'FileEncryption', 'encrypt', [path, password]);
+    exec(success, error, PLUGIN_NAME, 'encrypt', [path, password]);
   },
-
-  /**
-   * decrypt
-   *
-   * @param {String} path File URI
-   * @param {String} password Password for decryption
-   * @param {Function} success Success callback
-   * @param {Function} error Failure callback
-   * @returns {void}
-   */
-
   decrypt: function (path, password, success, error) {
     var decryptSuccess, decryptError;
 
@@ -47,42 +28,8 @@ var FileEncryption = {
     decryptSuccess = onSuccess.bind(null, success);
     decryptError = onError.bind(null, error);
 
-    exec(success, error, 'FileEncryption', 'decrypt', [path, password]);
-  }
+    exec(success, error, PLUGIN_NAME, 'decrypt', [path, password]);
+  },
 };
 
-
-/**
- * onSuccess
- *
- * @param {Function} success Success callback
- * @param {String} path Encrypted file URI
- * @returns {String} Encrypted file URI
- */
-function onSuccess(success, path) {
-  if (typeof success === 'function') {
-     success(path);
-    /*window.requestFileSystem(window.PERSISTENT, 0, function(fs) {
-      fs.root.getFile(path.split('/').pop(), {create: false}, function(file) {
-        file.file(function(fileObj) {
-          success(fileObj);
-        }, onError);
-      }, onError);
-    }, onError);*/
-  }
-}
-
-/**
- * onError
- *
- * @param {String} error Error callback
- * @param {Function} code Error code
- * @returns {String} Decrypted file URI
- */
-function onError(error, code) {
-  if (typeof error === 'function') error(code);
-  return code;
-}
-
-
-exports.FileEncryption = FileEncryption;
+module.exports = FileEncryption;
