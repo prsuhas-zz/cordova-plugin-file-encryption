@@ -8,11 +8,10 @@
 "use strict";
 
 var argscheck = require('cordova/argscheck'),
-	utils = require('cordova/utils'),
 	exec = require('cordova/exec');
 
-function FileEncryption() {
-}
+var FileEncryption = function() {
+};
 
 /**
    * encrypt
@@ -65,13 +64,14 @@ FileEncryption.prototype.decrypt = function (path, password,  success, error) {
  */
 function onSuccess(success, path) {
   if (typeof success === 'function') {
-    window.requestFileSystem(window.PERSISTENT, 0, function(fs) {
+     success(path);
+    /*window.requestFileSystem(window.PERSISTENT, 0, function(fs) {
       fs.root.getFile(path.split('/').pop(), {create: false}, function(file) {
         file.file(function(fileObj) {
           success(fileObj);
         }, onError);
       }, onError);
-    }, onError);
+    }, onError);*/
   }
 }
 
@@ -87,12 +87,5 @@ function onError(error, code) {
   return code;
 }
 
-FileEncryption.install = function () {
-	if (!window.plugins) {
-		window.plugins = {};
-	}
-	window.plugins.fileEncryption = new FileEncryption();
-	return window.plugins.fileEncryption;
-};
 
-cordova.addConstructor(FileEncryption.install);
+module.exports = FileEncryption;

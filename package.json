@@ -1,6 +1,6 @@
 {
   "name": "cordova-plugin-file-encryption",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Cordova File Encryption Plugin for Android and iOS",
   "cordova": {
     "id": "cordova-plugin-file-encryption",
