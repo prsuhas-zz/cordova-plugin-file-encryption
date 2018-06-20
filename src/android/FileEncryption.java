@@ -27,11 +27,14 @@ import com.facebook.crypto.exception.CryptoInitializationException;
 import com.facebook.crypto.exception.KeyChainException;
 import com.facebook.android.crypto.keychain.SharedPrefsBackedKeyChain;
 import com.facebook.crypto.keychain.KeyChain;
+import com.sun.org.apache.xerces.internal.util.URI;
 
 /**
  * This class encrypts and decrypts files using the Conceal encryption lib
  */
 public class FileEncryption extends CordovaPlugin {
+
+  private static final String TAG = "FileEncryption";
 
   public static final String ENCRYPT_ACTION = "encrypt";
   public static final String DECRYPT_ACTION = "decrypt";
@@ -54,9 +57,11 @@ public class FileEncryption extends CordovaPlugin {
     if (action.equals(ENCRYPT_ACTION) || action.equals(DECRYPT_ACTION)) {
       CordovaResourceApi resourceApi = webView.getResourceApi();
 
-      String path = args.getString(0);
+      URIing path = args.getString(0);
       String pass = args.getString(1);
       Uri normalizedPath = resourceApi.remapUri(Uri.parse(path));
+
+      Log.d(TAG, "normalizedPath: "+ normalizedPath.getPath().toString());
 
       this.cryptOp(normalizedPath.toString(), pass, action, callbackContext);
 
@@ -98,12 +103,16 @@ public class FileEncryption extends CordovaPlugin {
         callbackContext.error(1);
       }
     } catch (IOException e) {
+      Log.d(TAG, "initCrypto IOException: " + e.getMessage());
       callbackContext.error(e.getMessage());
     } catch (CryptoInitializationException e) {
+      Log.d(TAG, "initCrypto CryptoInitializationException: " + e.getMessage());
       callbackContext.error(e.getMessage());
     } catch (KeyChainException e) {
-      callbackContext.error(e.getMessage());
+      Log.d(TAG, "initCrypto KeyChainException: " + e.getMessage());
+      callbackCntext.error(e.getMessage();
     } catch (Exception e) {
+      Log.d(TAG, "initCrypto Exception: " + e.getMessage());
       callbackContext.error(e.getMessage());
     }
   }
@@ -138,14 +147,17 @@ public class FileEncryption extends CordovaPlugin {
         // create input stream from source file
         INPUT_STREAM = new FileInputStream(SOURCE_FILE);
       } catch (FileNotFoundException e) {
+        Log.d(TAG, "initCrypto FileNotFoundException: " + e.toString());
         callbackContext.error(e.getMessage());
         e.printStackTrace();
       } catch (IOException e) {
+        Log.d(TAG, "initCrypto IOException: " + e.toString());
         callbackContext.error(e.getMessage());
-        e.printStackTrace();
+        e.printStackTrace();        
       }
     } else {
-      callbackContext.error(2);
+      Log.d(TAG, "initCrypto error ");
+      callbackContext.error(2);      
     }
   }
 
@@ -162,12 +174,15 @@ public class FileEncryption extends CordovaPlugin {
         outputStream.flush();
       }
 
+      Log.d(TAG, "writeFile called ");
+
       // close output stream
       outputStream.close();
       inputStream.close();
     } catch (IOException e) {
+      Log.d(TAG, "writeFile error: " + e.toString());
       callbackContext.error(e.getMessage());
-      e.printStackTrace();
+      e.printStackTrace();      
     }
   }
 
@@ -183,5 +198,7 @@ public class FileEncryption extends CordovaPlugin {
       }
       in.close();
       out.close();
+
+      Log.d(TAG, "copyFile called ");
   }
 }
