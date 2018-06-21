@@ -58,7 +58,7 @@ public class FileEncryption extends CordovaPlugin {
     if (action.equals(ENCRYPT_ACTION) || action.equals(DECRYPT_ACTION)) {
       CordovaResourceApi resourceApi = webView.getResourceApi();
 
-      URIing path = args.getString(0);
+      String path = args.getString(0);
       String pass = args.getString(1);
       Uri normalizedPath = resourceApi.remapUri(Uri.parse(path));
 
