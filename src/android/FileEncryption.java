@@ -110,7 +110,7 @@ public class FileEncryption extends CordovaPlugin {
       callbackContext.error(e.getMessage());
     } catch (KeyChainException e) {
       Log.d(TAG, "initCrypto KeyChainException: " + e.getMessage());
-      callbackCntext.error(e.getMessage();
+      callbackCntext.error(e.getMessage());
     } catch (Exception e) {
       Log.d(TAG, "initCrypto Exception: " + e.getMessage());
       callbackContext.error(e.getMessage());
@@ -132,7 +132,7 @@ public class FileEncryption extends CordovaPlugin {
       CRYPTO = AndroidConceal.get().createDefaultCrypto(keyChain);
       
       ENTITY = Entity.create(password);
-      
+
       // check for whether crypto is available
       if (!CRYPTO.isAvailable()) {
         callbackContext.error(1);
@@ -153,11 +153,11 @@ public class FileEncryption extends CordovaPlugin {
       } catch (IOException e) {
         Log.d(TAG, "initCrypto IOException: " + e.toString());
         callbackContext.error(e.getMessage());
-        e.printStackTrace();        
+        e.printStackTrace();
       }
     } else {
       Log.d(TAG, "initCrypto error ");
-      callbackContext.error(2);      
+      callbackContext.error(2);
     }
   }
 
@@ -182,7 +182,7 @@ public class FileEncryption extends CordovaPlugin {
     } catch (IOException e) {
       Log.d(TAG, "writeFile error: " + e.toString());
       callbackContext.error(e.getMessage());
-      e.printStackTrace();      
+      e.printStackTrace();
     }
   }
 
