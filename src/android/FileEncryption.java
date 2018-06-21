@@ -28,7 +28,7 @@ import com.facebook.crypto.exception.CryptoInitializationException;
 import com.facebook.crypto.exception.KeyChainException;
 import com.facebook.android.crypto.keychain.SharedPrefsBackedKeyChain;
 import com.facebook.crypto.keychain.KeyChain;
-import com.sun.org.apache.xerces.internal.util.URI;
+
 
 /**
  * This class encrypts and decrypts files using the Conceal encryption lib
@@ -111,7 +111,7 @@ public class FileEncryption extends CordovaPlugin {
       callbackContext.error(e.getMessage());
     } catch (KeyChainException e) {
       LOG.d(TAG, "initCrypto KeyChainException: " + e.getMessage());
-      callbackCntext.error(e.getMessage());
+      callbackContext.error(e.getMessage());
     } catch (Exception e) {
       LOG.d(TAG, "initCrypto Exception: " + e.getMessage());
       callbackContext.error(e.getMessage());
